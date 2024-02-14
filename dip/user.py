@@ -96,6 +96,7 @@ def removeFromCart():
     if fID in fList:
         if fList[fID] <= 0:
             fList.pop(fID)
+            session['cart'].pop(fID)
             return redirect('/user/cart')
         else:
             fList[fID] -= 1
