@@ -1,0 +1,41 @@
+{% include "foodmenu.html"%}
+
+<div class="container is-center ">
+    <div class="row">
+        {%for item in data%}
+        <div class="col-6 col-6-md col-3-lg food-card card">
+            <div class="card-title">
+                <h5>{{item.name}}</h5>
+            </div>
+            <div class="is-center">
+                {%if item.path_to_img != None %}
+                <img class=" card-img is-full-width is-center"
+                    src="{{url_for('static', filename='images/'+item.path_to_img)}}">
+                {%else%}
+                <img class=" card-img is-full-width is-center" src="{{url_for('static', filename='images/bim.png')}}">
+                {%endif%}
+            </div>
+
+            <div class="menu-links-add">
+                <div class="is-center">
+                    <h5>
+                        {{item.price}} р.
+                    </h5>
+                </div>
+                <div class="menu-links is-full-width ">
+                    <a class="menu-links button outline  is-full-width "
+                        href="{{url_for('user.aboutFood', foodId = item.foodId)}}">Подробнее</a>
+                </div>
+                {%if item.stoplist == 'недоступно'%}
+                    <h4>Нет в наличии</h4>
+                {%else%}
+                <div class="menu-links is-full-width">
+                    <a class=" button cart-btn  bd-error  is-full-width "
+                        href="{{url_for('user.addToCart', foodId = item.foodId)}}">В корзину</a>
+                </div>
+                {%endif%}
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>

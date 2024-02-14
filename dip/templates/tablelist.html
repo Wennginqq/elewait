@@ -1,0 +1,46 @@
+{% include "nav.html"%}
+
+<br>
+<div class="container is-center">
+    <div class="row col-12">
+        <table>
+            <tbody>
+                {%for table in tblist %}
+                <tr>
+                    <td>Стол номер: {{table.tableId}}</td>
+                    {%if table.waiter == 1 %}
+                    <td class="table-list-btn button error  ">
+                        Ожидает официанта
+                    </td>
+                    {%else%}
+                    <td class="table-list-btn  button Dark outline  ">
+                        Официант не требуется
+                    </td>
+                    {%endif%}
+                    {%if table.status == 'Обслуживается' %}
+                    <td class="table-list-btn button Primary  ">
+                        Обслуживается
+                    </td>
+                    <td class="table-list-btn table-list-over-btn button bd-error">
+                        <a class=""
+                            href="{{url_for('table.endTableSession', tableID=table.tableId)}}">Завершить</a>
+                    </td>
+                    {%elif table.status == 'Ожидает'%}
+                    <td class="table-list-btn  button error  ">
+                        Ожидает
+                    </td>
+                    <td class="table-list-btn button bd-primary">
+                        <a class="" href="{{url_for('table.startTableSession', tableID=table.tableId)}}">Начать</a>
+                    </td>
+                    {%else%}
+                    <td class="table-list-btn button Dark outline">
+                        Пустой
+                    </td>
+                    {%endif%}
+                </tr>
+
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>

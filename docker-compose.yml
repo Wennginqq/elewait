@@ -1,0 +1,18 @@
+version: "2"
+services:
+  elewait:
+    build: ./dip/
+    links:
+      - mysql
+    ports:
+      - "5000:5000"
+  
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro

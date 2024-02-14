@@ -1,0 +1,66 @@
+
+.admin-nav-menu {
+    margin-top:10px;
+}
+.menu-list {
+    list-style: none;
+}
+.menu-btn {
+    font-size: 16px;
+    margin:5px;
+
+}
+.table-list-btn {
+    width: 300px;
+    background-color: white;
+
+}
+.table-list-over-btn {
+    color:black;
+}
+.about-food-h {
+    font-weight: 400;
+}
+.table-list-btn  {
+    color: black;
+ 
+}
+.table-list-section {
+    border-bottom: 1px solid black;
+}
+
+.food-card {
+    
+    padding: 20px;
+    
+    
+    
+}
+.cart-btn {
+    background-color: white;
+}
+
+
+.card-img {
+    max-width: 270px;
+    max-height: 170px;
+}
+
+.menu-links-add {
+    margin-top:5px;
+    position: sticky;
+    top:100%;
+}
+.menu-links {
+    margin-top:5px;
+}
+.login-form {
+    margin-top:10%;
+}
+.login-submit-btn {
+    margin-top:20px;
+}
+
+.confirm-form-button {
+    color:black;
+}

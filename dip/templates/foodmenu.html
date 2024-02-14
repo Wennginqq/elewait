@@ -1,0 +1,25 @@
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+</head>
+<br>
+<div class=" container is-center">
+    <div class="row">
+            <a class="col-12 col-12-md col-2-lg navbar-menu-links button outline" href="{{url_for('user.showMenuHot')}}">Горячее</a>
+            <a class="col-12 col-12-md col-2-lg navbar-menu-links button outline" href="{{url_for('user.showMenuSalad')}}">Салаты</a>
+            <a class="col-12 col-12-md col-2-lg navbar-menu-links button outline" href="{{url_for('user.showMenuSoup')}}">Супы</a>
+            <a class="col-12 col-12-md col-2-lg navbar-menu-links button outline" href="{{url_for('user.showMenuSnaks')}}">Закуски</a>
+            <a class="col-12 col-12-md col-2-lg navbar-menu-links button outline" href="{{url_for('user.showMenuDrinks')}}">Напитки</a>
+            <a class="col-12 col-12-md col-2-lg navbar-menu-links button cart-btn  bd-error" href="{{url_for('user.cart')}}">Корзина</a>
+    </div>
+</div>
+
+<div class="container is-center">
+    {%if session['calling'] == 0%}
+    <a class="button Primary outline" href="{{url_for('user.startCall')}}">Вызвать официанта</a></div>
+    {%else%}
+    <a class="button error" href="{{url_for('user.endCall')}}">Отменить вызов</a></div>
+    {%endif%}
+</div>
+
+<br>

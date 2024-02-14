@@ -1,0 +1,63 @@
+{% include "foodmenu.html"%}
+<div class="container is-center">
+    
+    <div class="row col-8">
+        <div>
+            <h4>Корзина</h4>
+            {%if session['message'] != ''%}
+            <h4>{{session['message']}}</h4>
+            {%endif%}
+            {%if session['cart'] == {} and session['orderId'] == ''%}
+            <h4 class="bg-error text-white text-light">Корзина пуста</h4>
+            {%endif%}
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Название</td>
+                    <td>Цена</td>
+                    <td>Кол-во</td>
+                </tr>
+            </thead>
+            <tbody>
+                {%for el in temp%}
+                <tr>
+                    <td>{{el.name}}</td>
+                    <td>{{el.price}}</td>
+                    <td><a class="  menu-btn button error text-center"
+                            href="{{url_for('user.removeFromCart', foodId = el.foodId, fromcart=True)}}">-</a>
+                        {{cartList[el.foodId|string]}}
+                        <a class="  menu-btn button error text-center"
+                            href="{{url_for('user.addToCart', foodId = el.foodId, fromcart=True)}}">+</a>
+                    </td>
+                </tr>
+                {%endfor%}
+
+            </tbody>
+        </table>
+        <a class="  menu-btn button error text-center" href="{{url_for('user.addOrder')}}">Оформить заказ</a>
+    </div>
+</div>
+
+<div class="container is-center">
+
+    <div class="row col-8">
+        <h4>Заказ</h4>
+    <table class="">
+        <thead>
+            <tr>
+                <td>Наименование</td>
+                <td>Кол-во</td>
+            </tr>
+        </thead>
+        <tbody>
+            {%for item in orderList%}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.ordered_amount}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+</div>

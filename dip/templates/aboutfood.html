@@ -1,0 +1,22 @@
+{% include "foodmenu.html"%}
+
+<div class="container card">
+    <div class="row is-center">
+        <div>
+            <h4 class="is-center">{{items.name}}</h4>
+            <div>
+                <div class="is-center">
+                    {%if items.path_to_img != None %}
+                    <img class="  is-full-width is-center"
+                        src="{{url_for('static', filename='images/'+items.path_to_img)}}">
+                    {%else%}
+                    <img class="  is-full-width is-center"
+                        src="{{url_for('static', filename='images/bim.png')}}">
+                    {%endif%}
+                </div>
+            </div>
+            <h4 class="is-center about-food-h">{{items.caption}}</h4>
+            <h4 class="is-center">{{items.price}} р.</h4>
+        </div>
+    </div>
+</div>

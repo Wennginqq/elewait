@@ -1,0 +1,16 @@
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+</head>
+{%if session.loggedin==True%}
+<div class="container is-right ">
+    <div class="row">
+        <div class="col admin-nav-menu">
+            
+            <a class="navbar-links button outline" href="{{url_for('table.tableList')}}">Столы</a>
+            <a class="navbar-links button outline" href="{{url_for('menu.showAdminMenu')}}">Меню</a>
+            <a class="navbar-links button outline" href="{{url_for('login.logout')}}">Выйти</a>
+        </div>
+    </div>
+</div>
+{%endif%}

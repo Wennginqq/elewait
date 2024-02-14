@@ -1,0 +1,35 @@
+
+{% include "nav.html"%}
+<div class="container is-center ">
+    <div class="row">
+        {%for item in items%}
+        <div class="col-6 col-6-md col-3-lg food-card card">
+            <div class="card-title">
+                <h5>{{item.name}}</h5>
+            </div>
+            <div class="is-center">
+                {%if item.path_to_img != None %}
+                <img class=" card-img is-full-width is-center"
+                    src="{{url_for('static', filename='images/'+item.path_to_img)}}">
+                {%else%}
+                <img class=" card-img is-full-width is-center" src="{{url_for('static', filename='images/bim.png')}}">
+                {%endif%}
+            </div>
+
+            <div class="menu-links-add">
+                <div class="is-center">
+                </div>
+                <div class="menu-links is-full-width ">
+                    {%if item.stoplist == 'доступно'%}
+                    <a class="menu-links button outline  is-full-width "
+                        href="{{url_for('menu.intoStoplist', foodId = item.foodId)}}">В стоплист</a>
+                    {%else%}
+                    <a class="menu-links button outline  is-full-width "
+                        href="{{url_for('menu.fromStoplist', foodId = item.foodId)}}">Из стоплиста</a>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
