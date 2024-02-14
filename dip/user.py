@@ -94,9 +94,11 @@ def removeFromCart():
     fromcart = request.args.get('fromcart')
     fList = session['cart']
     if fID in fList:
-        if fList[fID] <= 0:
+        if fList[fID] < 2:
             fList.pop(fID)
-            session['cart'].pop(fID)
+            session['cart'] = fList
+            print(type(session['cart']))
+            
             return redirect('/user/cart')
         else:
             fList[fID] -= 1
