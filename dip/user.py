@@ -13,10 +13,16 @@ def getTable(userID):
     session['calling'] = 0
 
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('update tablelist set status = "Ожидает" where tableId = %s',(userID,))
-    mysql.connection.commit()
-    cursor.close()
-    return redirect('/user/menu/hot')
+    cursor.execute('select status from tablelist where tableId = %s', (userID,))
+    checkForActive = cursor.fetchone()
+    if checkForActive['status'] == "Обслуживается":
+        cursor.close()
+        return redirect('/user/menu/hot')
+    else:
+        cursor.execute('update tablelist set status = "Ожидает" where tableId = %s',(userID,))
+        mysql.connection.commit()
+        cursor.close()
+        return redirect('/user/menu/hot')
 
 @userBlueprint.route('/user/menu/hot', methods =['GET', 'POST'])
 def showMenuHot():
