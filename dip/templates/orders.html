@@ -1,0 +1,28 @@
+{% include "nav.html"%}
+<div class="container">
+    <h3>Заказы</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Описание</td>
+                <td>Номер стола</td>
+                <td>Дата</td>
+                <td>Чек</td>
+            </tr>
+        </thead>
+        <tbody>
+            {%for order in orders%}
+            <tr class = "order-line">
+                <td>{{order.orderId}}</td>
+                <td>{{order.caption}}</td>
+                <td>{{order.tableId}}</td>
+                <td>{{order.order_date}}</td>
+                <td>{{order.bill}}</td>
+                <td> <a class="navbar-links button outline"
+                        href="{{url_for('table.aboutOrder', orderId = order.orderId)}}">Подробнее</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>

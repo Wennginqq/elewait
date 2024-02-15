@@ -1,0 +1,39 @@
+
+{% include "nav.html"%}
+<div class="container">
+    <h3>Подробности о заказе № {{order.orderId}} от {{order.order_date}}</h3>
+    <div class="row">
+        <table>
+            <thead>
+                <tr>
+                    <td>Номер стола</td>
+                    <td>Чек</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{order.tableId}}</td>
+                    <td>{{order.bill}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Наименования:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <td>Позиция</td>
+                    <td>Кол-во</td>
+                </tr>
+            </thead>
+            <tbody>
+                {%for item in foodInOrder%}
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ordered_amount}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+
+</div>
